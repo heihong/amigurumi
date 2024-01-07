@@ -1,0 +1,25 @@
+
+<style>
+ 
+</style>
+
+<main class="main">
+    <app-header></app-header>
+    <div class="body-pattern"> 
+        @for(pattern of patterns; track pattern.id) {
+            <app-card [title]="pattern.title" [description]="pattern.description"></app-card>
+        }
+    </div>
+    
+</main>
+
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<!-- * * * * * * * * * * * The content above * * * * * * * * * * * * -->
+<!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * * -->
+<!-- * * * * * * * * * * and can be replaced.  * * * * * * * * * * * -->
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<!-- * * * * * * * * * * End of Placeholder  * * * * * * * * * * * * -->
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+
+
+<router-outlet></router-outlet>
