@@ -3,16 +3,16 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const path = require('path');
 
-const stuffRoutes = require('./routes/stuff');
-const userRoutes = require('./routes/user');
+//const stuffRoutes = require('./routes/stuff');
+//const userRoutes = require('./routes/user');
 
-mongoose.connect(
+/*mongoose.connect(
   "mongodb+srv://traingheihong:ujh9ruQ8PTDwuy@cluster0.d1t0w75.mongodb.net/?retryWrites=true&w=majority", //Add your connection string from MongoDB
   { useNewUrlParser: true, 
     useUnifiedTopology: true })
     .then(() => console.log('Connection à MongoDB réussie'))
     .catch(() => console.log('Connection à MongoDB échouée'));
-
+*/
 const app = express();    
 
 app.use((req, res, next) => {
@@ -21,6 +21,23 @@ app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, PATCH, OPTIONS');
     next();
 });
+
+
+app.use('/api/patterns', (req, res, next) => {
+    const patterns = [
+        {
+            id:'0',
+            title: 'pikachu',
+            description:'pikachu description'
+        },
+        {
+            id:'1',
+            title:'sailor',
+            description:'sailor description'
+        }
+    ];
+    res.status(200).json(patterns);
+  });
 
 app.use(bodyParser.json());
 

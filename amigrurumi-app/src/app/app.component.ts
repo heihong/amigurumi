@@ -19,7 +19,9 @@ export class AppComponent {
   patternsService:PatternsService = inject(PatternsService)
 
   constructor() {
-    this.patterns = this.patternsService.getAllPatterns();
+   this.patternsService.getAllPatterns().then((patterns:Patterns[])=>{
+    this.patterns = patterns
+   })
   }
 
 }
