@@ -1,8 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import { CardComponent } from './card/card.component'
 import { HeaderComponent } from './header/header.component';
+import { Patterns } from './patterns';
+import { PatternsService } from './patterns.service';
 
 @Component({
   selector: 'app-root',
@@ -13,15 +15,11 @@ import { HeaderComponent } from './header/header.component';
 })
 export class AppComponent {
   title = 'amigrurumi-app';
-  patterns=[
-        {
-            id:0,
-            title: 'pikachu',
-            description:'pikachu description'
-        },
-        {
-            id:1,
-            title:'sailor',
-            description:'sailor description'
-        }]
+  patterns: Patterns[]=[]
+  patternsService:PatternsService = inject(PatternsService)
+
+  constructor() {
+    this.patterns = this.patternsService.getAllPatterns();
+  }
+
 }
