@@ -10,8 +10,8 @@ export class PatternsService {
   constructor() { }
 
   async getAllPatterns(): Promise<Patterns[]> {
-    const data = await fetch(this.url)
-    return await data.json() ?? []
+    const data = await fetch(this.url);
+    return await data.json() ?? [];
   }
 
  /* getPatternById(id: string): Patterns | undefined {

@@ -5,11 +5,7 @@
 
 <main class="main">
     <app-header></app-header>
-    <div class="body-pattern"> 
-        @for(pattern of patterns; track pattern.id) {
-            <app-card [title]="pattern.title" [description]="pattern.description"></app-card>
-        }
-    </div>
+    <router-outlet></router-outlet>
     
 </main>
 
@@ -22,4 +18,4 @@
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 
 
-<router-outlet></router-outlet>
+
