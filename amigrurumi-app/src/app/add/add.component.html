@@ -1,0 +1,18 @@
+<form [formGroup]="applyForm" (submit)="createPattern()">
+    <label for="title">Titre</label>
+    <input id="title" type="text" placeholder="Entrer un titre" formControlName="title"/>
+
+    <label for="description">Description</label>
+    <textarea
+    id="description"
+    name="description"
+    rows="5"
+    cols="30"
+    placeholder="Entrer une description" 
+    formControlName="description"></textarea>
+
+    <ul>
+        <li><a class="button primary-button" routerLink="/">Annuler</a></li>
+        <li><button class="button primary-button" type="submit">Ajouter</button></li>
+    </ul>  
+</form>

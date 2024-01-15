@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
-import { PatternsService } from '../patterns.service';
-import { Patterns } from '../patterns';
+import { PatternService } from '../pattern.service';
+import { Pattern } from '../pattern';
 import { CardComponent } from '../card/card.component';
 
 @Component({
@@ -12,11 +12,11 @@ import { CardComponent } from '../card/card.component';
 })
 export class HomeComponent {
     title = 'amigrurumi-app';
-    patterns: Patterns[]=[]
-    patternsService:PatternsService = inject(PatternsService)
+    patterns: Pattern[]=[]
+    patternsService:PatternService = inject(PatternService)
   
     constructor() {
-     this.patternsService.getAllPatterns().then((patterns:Patterns[])=>{
+     this.patternsService.getAllPatterns().then((patterns:Pattern[])=>{
       this.patterns = patterns
      })
     }

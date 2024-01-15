@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { PatternsService } from './patterns.service';
+import { PatternService } from './pattern.service';
 
-describe('PatternsService', () => {
-  let service: PatternsService;
+describe('PatternService', () => {
+  let service: PatternService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(PatternsService);
+    service = TestBed.inject(PatternService);
   });
 
   it('should be created', () => {

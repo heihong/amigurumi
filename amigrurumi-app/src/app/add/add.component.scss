@@ -1,0 +1,36 @@
+label {
+    display: block;
+    margin-top: 10px;
+}
+
+input {
+    margin-bottom: 10px;
+}
+
+
+.button {
+    padding: 10px;
+    color: white;
+    cursor: pointer;
+    text-decoration: none;
+
+    
+}
+
+ul {
+    display: flex;
+    align-items: baseline;
+
+}
+
+li {
+    flex-direction: row;
+    list-style: none;
+    margin-right: 10px;
+}
+
+.primary-button {
+    background-color: blue;
+    
+
+}

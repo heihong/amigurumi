@@ -13,3 +13,15 @@
     }
     
 }
+
+ul {
+    display: flex;
+    align-items: baseline   ;
+
+}
+
+li {
+    flex-direction: row;
+    list-style: none;
+    margin-right: 10px;
+}

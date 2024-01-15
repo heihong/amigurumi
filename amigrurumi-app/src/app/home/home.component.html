@@ -1,5 +1,5 @@
 <div class="body-pattern"> 
     @for(pattern of patterns; track pattern.id) {
-        <app-card [title]="pattern.title" [description]="pattern.description"></app-card>
+        <app-card [title]="pattern.title" [description]="pattern.description" [id]="pattern.id"></app-card>
     }
 </div>
