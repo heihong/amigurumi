@@ -17,7 +17,6 @@ export class DetailsComponent {
     patternsService:PatternService = inject(PatternService)
     constructor() {
         this.patternsService.getPatternById(this.route.snapshot.params['id']).then((pattern:Pattern)=>{
-            console.log(pattern)
             this.pattern =  {...pattern}
            })
     }
