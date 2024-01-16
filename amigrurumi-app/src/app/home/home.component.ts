@@ -13,9 +13,8 @@ import { CardComponent } from '../card/card.component';
 export class HomeComponent {
     title = 'amigrurumi-app';
     patterns: Pattern[]=[]
-    patternsService:PatternService = inject(PatternService)
   
-    constructor() {
+    constructor( private patternsService: PatternService) {
      this.patternsService.getAllPatterns().then((patterns:Pattern[])=>{
       this.patterns = patterns
      })

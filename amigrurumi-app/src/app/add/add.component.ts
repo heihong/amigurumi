@@ -16,11 +16,9 @@ export class AddComponent {
     title: new FormControl(''),
     description: new FormControl(''),
  })
- constructor(private router: Router){
-
+ constructor(private router: Router, private patternsService: PatternService ){
  }
- patternsService:PatternService = inject(PatternService)
-
+ 
  createPattern() {
     this.patternsService.createPattern(this.applyForm.value.title||'' , this.applyForm.value.description||'').then(()=>{
         this.router.navigate(['/']);

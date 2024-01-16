@@ -16,7 +16,6 @@ import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angul
 export class DetailsComponent {
    
     route: ActivatedRoute = inject(ActivatedRoute);
-    patternsService:PatternService = inject(PatternService)
 
     edit= false;
     title:string = '';
@@ -28,7 +27,7 @@ export class DetailsComponent {
      })
     
 
-    constructor(private router: Router) {
+    constructor(private router: Router, private patternsService: PatternService) {
         this.patternsService.getPatternById(this.route.snapshot.params['id']).then((pattern:Pattern)=>{
             this.title = pattern.title;
             this.description = pattern.description
