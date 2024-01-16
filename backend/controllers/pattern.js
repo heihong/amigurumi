@@ -46,3 +46,39 @@ exports.getOnePattern = (req, res, next) => {
       }
     );
   };
+
+  exports.editPattern = (req, res, next) => {
+    console.log(req.body)
+    const pattern = new Pattern({
+      _id: req.params.id,
+      title: req.body.title,
+      description: req.body.description,
+    });
+    Pattern.updateOne({_id: req.params.id}, pattern).then(
+      () => {
+        res.status(201).json(pattern);
+      }
+    ).catch(
+      (error) => {
+        res.status(400).json({
+          error: error
+        });
+      }
+    );
+  };
+
+  exports.deletePattern = (req, res, next) => {
+    Pattern.deleteOne({_id: req.params.id}).then(
+      () => {
+        res.status(200).json({
+          message: 'Deleted!'
+        });
+      }
+    ).catch(
+      (error) => {
+        res.status(400).json({
+          error: error
+        });
+      }
+    );
+  };

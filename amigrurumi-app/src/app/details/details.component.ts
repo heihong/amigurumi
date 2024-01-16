@@ -1,23 +1,54 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Pattern } from '../pattern';
 import { PatternService } from '../pattern.service';
+import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 
 @Component({
   selector: 'app-details',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, ReactiveFormsModule, FormsModule],
   templateUrl: './details.component.html',
   styleUrl: './details.component.scss'
 })
 export class DetailsComponent {
+   
     route: ActivatedRoute = inject(ActivatedRoute);
-    pattern: Pattern= {title:'', description:'', id:''}
     patternsService:PatternService = inject(PatternService)
-    constructor() {
+
+    edit= false;
+    title:string = '';
+    description:string=''
+
+    applyForm= new FormGroup({
+        title: new FormControl(this.title),
+        description: new FormControl(this.description),
+     })
+    
+
+    constructor(private router: Router) {
         this.patternsService.getPatternById(this.route.snapshot.params['id']).then((pattern:Pattern)=>{
-            this.pattern =  {...pattern}
-           })
+            this.title = pattern.title;
+            this.description = pattern.description
+        })
     }
+
+    editPattern() {
+        this.patternsService.editPattern(this.applyForm.value.title||'' , this.applyForm.value.description||'', this.route.snapshot.params['id']).then((pattern:Pattern)=>{
+            this.edit=false;
+            console.log(pattern)
+            this.title = pattern.title;
+            this.description = pattern.description
+        });
+    
+    }
+
+    deletePattern() {
+        this.patternsService.deletePattern(this.route.snapshot.params['id']).then(()=>{
+            this.router.navigate(['/']);
+        });
+    }
+
 }

@@ -25,14 +25,32 @@ export class PatternService {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({title, description, id:this.randomId}),
+        body: JSON.stringify({title, description, id:''}),
       });
   
       const result = await data.json();
       console.log("succeed :", result);    
   }
 
-  randomId (length = 6): string {
-    return Math.random().toString(36).substring(2, length+2);
-  };
+  async editPattern(title:string, description:string, id:string) {
+    const data = await fetch(this.url+ '/'+ id, {
+        method: "PUT", // ou 'PUT'
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({title, description, id:''}),
+      });
+    return await data.json() ?? {};
+  }
+
+  async deletePattern(id:string) {
+    await fetch(this.url+ '/'+ id, {
+        method: "DELETE", // ou 'PUT'
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      console.log("delete succeed");    
+
+  }
 }

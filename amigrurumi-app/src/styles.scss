@@ -3,3 +3,45 @@
 body {
     margin: 0;
 }
+
+.button {
+    padding: 10px;
+    color: white;
+    cursor: pointer;
+    text-decoration: none;
+
+    
+}
+
+.primary-button {
+    background-color: blue;
+}
+
+.second-button {
+    background-color: grey;
+}
+
+label {
+    display: block;
+    margin-top: 10px;
+}
+
+input {
+    margin-bottom: 10px;
+}
+
+
+
+
+ul {
+    display: flex;
+    align-items: baseline;
+
+}
+
+li {
+    flex-direction: row;
+    list-style: none;
+    margin-right: 10px;
+}
+
