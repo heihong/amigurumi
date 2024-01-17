@@ -1,8 +1,8 @@
-@if(!edit){
+@if(!isEdit){
     <h3> {{title}}</h3>
     <p>{{description}}</p>
     <ul>
-        <li><button class="button second-button" (click)="edit= true">Modifier</button></li>
+        <li><button class="button second-button" (click)="isEdit= true">Modifier</button></li>
         <li><button class="button primary-button" (click)="deletePattern()">Supprimer</button></li>
     </ul>  
   
@@ -22,7 +22,7 @@
             formControlName="description" [ngModel]="description"></textarea>
     
             <ul>
-                <li><a class="button second-button" (click)="edit= false">Annuler</a></li>
+                <li><a class="button second-button" (click)="isEdit= false">Annuler</a></li>
                 <li><button class="button primary-button" type="submit">Modifier</button></li>
             </ul>  
         </form>

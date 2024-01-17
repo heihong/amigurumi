@@ -1,7 +1,9 @@
-import { Component, inject } from '@angular/core';
+import { Component, Input, inject } from '@angular/core';
 import { PatternService } from '../pattern.service';
 import { Pattern } from '../pattern';
 import { CardComponent } from '../card/card.component';
+import { ActivatedRoute } from '@angular/router';
+import { map } from 'rxjs';
 
 @Component({
   selector: 'app-home',
@@ -11,12 +13,6 @@ import { CardComponent } from '../card/card.component';
   styleUrl: './home.component.scss'
 })
 export class HomeComponent {
-    title = 'amigrurumi-app';
-    patterns: Pattern[]=[]
-  
-    constructor( private patternsService: PatternService) {
-     this.patternsService.getAllPatterns().then((patterns:Pattern[])=>{
-      this.patterns = patterns
-     })
-    }
+    @Input() patterns: Pattern[] = [];
+   
 }
