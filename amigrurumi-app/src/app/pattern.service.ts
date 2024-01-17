@@ -8,24 +8,17 @@ import { of } from 'rxjs';
 export class PatternService {
     url = 'http://localhost:3000/api/pattern';
     patterns :Pattern[] = [];
-    isLodding = false
  
   constructor() { }
 
   async getAllPatterns(): Promise<any> {
     const data = await fetch(this.url);
-    this.patterns =  await data.json() ?? [];
+    this.patterns = await data.json() ?? [];
     if(this.patterns){
-        this.isLodding = true;
-        return of(this.isLodding)
+        return of(true)
     }else{
-        this.isLodding = false;
-        return of(this.isLodding)
+        return of(false)
     }
-  }
-
-    setPattern(patterns:Pattern[]){
-        this.patterns = [...patterns]
   }
 
 
