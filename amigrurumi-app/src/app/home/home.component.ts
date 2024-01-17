@@ -15,8 +15,6 @@ export class HomeComponent {
     patterns: Pattern[]=[]
   
     constructor( private patternsService: PatternService) {
-     this.patternsService.getAllPatterns().then((patterns:Pattern[])=>{
-      this.patterns = patterns
-     })
+        this.patterns = this.patternsService.patterns;
     }
 }
