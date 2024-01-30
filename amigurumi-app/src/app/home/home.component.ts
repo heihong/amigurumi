@@ -11,7 +11,7 @@ import { CardComponent } from '../card/card.component';
   styleUrl: './home.component.scss'
 })
 export class HomeComponent {
-    title = 'amigrurumi-app';
+    title = 'amigurumi-app';
     patterns: Pattern[]=[]
   
     constructor( private patternsService: PatternService) {
