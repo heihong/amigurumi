@@ -3,3 +3,6 @@
         <app-card [title]="pattern.title" [description]="pattern.description" [id]="pattern.id"></app-card>
     }
 </div>
+
+<p>{{count$ | async}}</p>
+<button (click)="increment()">increment</button>

@@ -1,7 +1,15 @@
 import { createAction, props } from '@ngrx/store';  
 
 
-export const login = createAction(
-    '[Login Page] Login',
-    props<{ username: string; password: string }>()
+export const increment = createAction(
+    'Increment action'
+  );
+
+  export const decrement = createAction(
+    'Decrement action'
+  );
+
+
+  export const reset = createAction(
+    'reset'
   );
