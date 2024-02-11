@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, inject } from '@angular/core';
+import { Component, Inject, OnInit, inject } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Pattern } from '../pattern';
 import { PatternService } from '../pattern.service';
@@ -13,41 +13,43 @@ import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angul
   templateUrl: './details.component.html',
   styleUrl: './details.component.scss'
 })
-export class DetailsComponent {
+export class DetailsComponent implements OnInit {
    
     route: ActivatedRoute = inject(ActivatedRoute);
+    patternsService = inject(PatternService)
 
     edit= false;
-    title:string = '';
-    description:string=''
 
-    applyForm= new FormGroup({
-        title: new FormControl(this.title),
-        description: new FormControl(this.description),
-     })
-    
+    applyForm!:FormGroup;
+    title = '';
+    id = this.route.snapshot.params['id'];
 
-    constructor(private router: Router, private patternsService: PatternService) {
-        this.patternsService.getPatternById(this.route.snapshot.params['id']).then((pattern:Pattern)=>{
-            this.title = pattern.title;
-            this.description = pattern.description
+
+    constructor(private router: Router) {
+        
+    }
+
+    ngOnInit(): void {
+        this.patternsService.getPatternById(this.id).subscribe((pattern:Pattern)=>{
+           this.title = pattern.title
+           this.initForm(pattern)
+
         })
     }
 
-    editPattern() {
-        this.patternsService.editPattern(this.applyForm.value.title||'' , this.applyForm.value.description||'', this.route.snapshot.params['id']).then((pattern:Pattern)=>{
-            this.edit=false;
-            console.log(pattern)
-            this.title = pattern.title;
-            this.description = pattern.description
-        });
-    
+    private initForm(pattern:Pattern){
+        this.applyForm = new FormGroup({
+            'title': new FormControl(pattern.title),
+        })
     }
 
-    deletePattern() {
-        this.patternsService.deletePattern(this.route.snapshot.params['id']).then(()=>{
-            this.router.navigate(['/']);
-        });
+    onSubmit(){
+        this.patternsService.editPatternById(this.id, {id:this.id, ...this.applyForm.value}).subscribe((pattern:Pattern)=>{
+           this.title = pattern.title
+            this.edit = false
+        })
+       
     }
+
 
 }

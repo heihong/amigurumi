@@ -1,7 +1,8 @@
-import { Component, inject } from '@angular/core';
+import { Component, OnDestroy, OnInit, inject } from '@angular/core';
 import { PatternService } from '../pattern.service';
 import { Pattern } from '../pattern';
 import { CardComponent } from '../card/card.component';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-home',
@@ -10,13 +11,21 @@ import { CardComponent } from '../card/card.component';
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit, OnDestroy {
     title = 'amigurumi-app';
-    patterns: Pattern[]=[]
-  
-    constructor( private patternsService: PatternService) {
-     this.patternsService.getAllPatterns().then((patterns:Pattern[])=>{
+    patterns: Pattern[]=[];
+    patternsService = inject(PatternService);
+    sub!: Subscription
+    constructor() {}
+
+
+    ngOnInit() {
+     this.sub =this.patternsService.getAllPatterns().subscribe((patterns:Pattern[])=>{
       this.patterns = patterns
      })
+    }
+
+    ngOnDestroy(): void {
+        this.sub.unsubscribe();
     }
 }

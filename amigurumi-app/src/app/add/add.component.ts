@@ -3,6 +3,7 @@ import { Component, inject } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { PatternService } from '../pattern.service';
 import { Router, RouterLink } from '@angular/router';
+import { Pattern } from '../pattern';
 
 @Component({
   selector: 'app-add',
@@ -12,16 +13,22 @@ import { Router, RouterLink } from '@angular/router';
   styleUrl: './add.component.scss'
 })
 export class AddComponent {
- applyForm= new FormGroup({
-    title: new FormControl(''),
-    description: new FormControl(''),
- })
- constructor(private router: Router, private patternsService: PatternService ){
- }
+    title = '';
+    applyForm =  new FormGroup({
+        'title': new FormControl(this.title),
+    })
+    patternsService = inject(PatternService)
+    constructor(private router: Router){
+    }
  
- createPattern() {
-    this.patternsService.createPattern(this.applyForm.value.title||'' , this.applyForm.value.description||'').then(()=>{
-        this.router.navigate(['/']);
-    });
- }
+
+    createPattern() {
+        let pattern : Pattern = {
+            id : this.patternsService.idUnique(),
+            title : this.applyForm.value['title'] || ''
+        }
+        this.patternsService.createPattern(pattern).subscribe(()=>{
+            this.router.navigate(['/']);
+        });
+    }
 }

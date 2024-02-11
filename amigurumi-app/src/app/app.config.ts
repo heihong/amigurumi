@@ -5,7 +5,8 @@ import { routes } from './app.routes';
 import { provideClientHydration } from '@angular/platform-browser';
 import { PatternService } from './pattern.service';
 import { provideStore } from '@ngrx/store';
+import { provideHttpClient, withFetch } from '@angular/common/http';
 
 export const appConfig: ApplicationConfig = {
-  providers: [provideRouter(routes), provideClientHydration(), { provide: PatternService }, provideStore()]
+  providers: [provideHttpClient(withFetch()),provideRouter(routes), provideClientHydration()]
 };

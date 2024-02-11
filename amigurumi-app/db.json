@@ -1,0 +1,130 @@
+{
+  "patterns": [
+    {
+      "id": "1Pikachu",
+      "title": "Pikachu 3"
+    },
+    {
+      "id": "2kirby",
+      "title": "kirby"
+    },
+    {
+      "id": "12",
+      "title": "pikachu 4"
+    },
+    {
+      "id": "20",
+      "title": "toto 5"
+    }
+  ],
+  "chapters": [
+    {
+      "id": "1",
+      "idPattern": "1Pikachu",
+      "title": "Tete",
+      "todos": [
+        {
+          "id": 1,
+          "todo": "6Sc in magic circle (6)",
+          "done": false
+        },
+        {
+          "id": 2,
+          "todo": "6INC (12))",
+          "done": false
+        },
+        {
+          "id": 3,
+          "todo": "(1Sc, INC) repeat 6 times (18)",
+          "done": false
+        },
+        {
+          "id": 4,
+          "todo": "(2Sc, INC) repeat 6 times (24)",
+          "done": false
+        }
+      ]
+    },
+    {
+      "id": "2",
+      "idPattern": "1Pikachu",
+      "title": "body",
+      "todos": [
+        {
+          "id": 1,
+          "todo": "6Sc in magic circle (6)",
+          "done": false
+        },
+        {
+          "id": 2,
+          "todo": "6INC (12))",
+          "done": false
+        },
+        {
+          "id": 3,
+          "todo": "(1Sc, INC) repeat 6 times (18)",
+          "done": false
+        },
+        {
+          "id": 4,
+          "todo": "(2Sc, INC) repeat 6 times (24)",
+          "done": false
+        }
+      ]
+    },
+    {
+      "id": "3",
+      "idPattern": "2kirby",
+      "title": "Tete",
+      "todos": [
+        {
+          "id": 1,
+          "todo": "6Sc in magic circle (6)",
+          "done": false
+        },
+        {
+          "id": 2,
+          "todo": "6INC (12))",
+          "done": false
+        },
+        {
+          "id": 3,
+          "todo": "SC then INC; repeat 5 times; (18)",
+          "done": false
+        },
+        {
+          "id": 4,
+          "todo": "SC then INC then SC; repeat 5 times; (24)",
+          "done": false
+        }
+      ]
+    },
+    {
+      "id": "4",
+      "idPattern": "2kirby",
+      "title": "body",
+      "todos": [
+        {
+          "id": 1,
+          "todo": "6Sc in magic circle (6)",
+          "done": false
+        },
+        {
+          "id": 2,
+          "todo": "6INC (12))",
+          "done": false
+        },
+        {
+          "id": 3,
+          "todo": "(1Sc, INC) repeat 6 times (18)",
+          "done": false
+        },
+        {
+          "id": 4,
+          "todo": "(2Sc, INC) repeat 6 times (24)",
+          "done": false
+        }
+      ]
+    }
+  ]
+}

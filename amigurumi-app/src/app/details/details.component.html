@@ -1,34 +1,20 @@
-@if(!edit){
+@if(!edit) {
     <h3> {{title}}</h3>
-    <p>{{description}}</p>
     <ul>
         <li><button class="button second-button" (click)="edit= true">Modifier</button></li>
-        <li><button class="button primary-button" (click)="deletePattern()">Supprimer</button></li>
     </ul>  
-  
-
 } @else {
-        <form [formGroup]="applyForm" (submit)="editPattern()">
-            <label for="title">Titre</label>
-            <input id="title" type="text" placeholder="Entrer un titre" formControlName="title" [ngModel]="title" />
-    
-            <label for="description">Description</label>
-            <textarea
-            id="description"
-            name="description"
-            rows="5"
-            cols="30"
-            placeholder="Entrer une description" 
-            formControlName="description" [ngModel]="description"></textarea>
-    
-            <ul>
-                <li><a class="button second-button" (click)="edit= false">Annuler</a></li>
-                <li><button class="button primary-button" type="submit">Modifier</button></li>
-            </ul>  
-        </form>
-       
+    <form [formGroup]="applyForm" (ngSubmit)="onSubmit()">
+        <label for="title">Titre</label>
+        <input id="title" type="text" placeholder="Entrer un titre" formControlName="title" />
+
+        <ul>
+            <li><button class="button primary-button" type="submit">Modifier</button></li>
+            <li><button class="button second-button" type="button">Annuler</button></li>
+        </ul>  
+    </form>
    
 
-    
-} 
 
+
+} 
